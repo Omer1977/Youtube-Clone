@@ -16,10 +16,10 @@ const VideoDetail = () => {
   const id = searchParams.get("v");
 
   useEffect(() => {
+    setVideo(null)
     getData(`/video/info?id=${id}&extend=1`).then((data) => setVideo(data));
-  }, []);
+  }, [searchParams]);
 
-  //console.log('video', video);
 
   return (
     <div className="detail-page p-5">

@@ -10,15 +10,19 @@ const SearchResults = () => {
   const [results, setResults] = useState(null);
   const query = searchParams.get("search_query");
 
+
   useEffect(() => {
-    getData(`/search?query=${query}`).then((res) => setResults(res.data.data));
+    getData(`/search?query=${query}`).then((res) => setResults(res.data));
   }, [query]);
 
   return (
     <div className="flex">
       <SideBar />
-      <div className="flex flex-col gap-5 px-4">
-        <h2>{query} için sonuçlar</h2>
+      <div className="flex justify-center flex-1 p-4 h-screen">
+        <div className="flex flex-col max-w-lg gap-10">
+          <p className="text-lg">
+        <span className="font-bold">{query}</span> için sonuçlar
+        </p>
 
         {!results ? (
           <Loader type={"video"} />
@@ -30,6 +34,7 @@ const SearchResults = () => {
               )
           )
         )}
+        </div>
       </div>
     </div>
   );
